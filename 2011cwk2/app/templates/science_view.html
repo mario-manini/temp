@@ -1,0 +1,21 @@
+{%extends "base_temp.html"%} {% block content %}
+<!--Use for loop to load science book data and send science book data to implement add in add_to_basket-->
+<div class="detail_product">
+    <div class="horizontal-detail">
+        <img src="{{science.image_url}}" class="detail_image">
+    </div>
+    <div class="product_description">
+        <h6 class="card-body">{{science.name}}</h6>
+        <h7>Science</h7>
+        <div class="product_price">
+            <p>£: {{science.price}}</p>
+        </div>
+        <p>tax included</p>
+        <form action="{{url_for('add_to_basket')}}" method="POST" style="display:inline;">
+            <input type="hidden" name="product_id" value="{{science.id}}">
+            <input type="hidden" name="product_type" value="science">
+            <button type="submit" class="btn btn-outline-dark">Add to Basket</button>
+        </form>
+    </div>
+</div>
+</div> {% endblock %}

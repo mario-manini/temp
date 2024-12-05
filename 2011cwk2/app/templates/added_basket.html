@@ -1,0 +1,19 @@
+{% extends "base_temp.html" %} {% block content %}
+
+<!--return to home or basket with button-->
+<div class="horizontal-gobasket">
+    <h10>Book Has Added to Basket</h10>
+</div>
+
+<div class="horizontal-gobasket-link">
+    <a href="{{url_for('home2')}}" class="middle-text">Continue Shopping</a>
+</div>
+<div class="horizontal-gobasket-link">
+    <a
+        href="{{url_for('view_basket',user_id=current_user.id)}}"
+        class="middle-text"
+        >Go to Basket</a
+    >
+</div>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends "base_temp.html" %} {% block content %}
+<h1>Basket</h1>
+<!--if there is no data from view_basket
+print empty basket-->
+{% if not textbooks_in_basket and not novels_in_basket and not
+biographies_in_basket and not science_in_basket %}
+<h3>Your basket is empty</h3>
+{% endif %}
+<!--if there is data which is assigned in view_basket for textbook
+use for loop to load data-->
+{% if textbooks_in_basket %} {% for product in textbooks_in_basket %}
+<div class="card mb-3 custom-card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img
+                src="{{product.image_url}}"
+                class="img-fluid rounded-start"
+                alt="..."
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">£{{product.price}}</h5>
+                <p class="card-text">{{product.product_name}}</p>
+                <div class="horizontal">
+                    <p>{{product.author}}</p>
+                </div>
+
+                <div class="horizontal-q">
+                    <p>Quantity: {{ product.quantity }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--send a textbook related data with button-->
+    <form
+        action="{{url_for('delete_product')}}"
+        method="POST"
+        style="display: inline"
+    >
+        <input type="hidden" name="product_id" value="{{product.product_id}}" />
+        <input type="hidden" name="product_type" value="textbook" />
+        <input type="hidden" name="user_id" value="{{product.user_id}}" />
+        <button class="btn btn-light position-absolute top-0 end-0 m-3">
+            X
+        </button>
+    </form>
+</div>
+{% endfor %} {% endif %}
+
+<!--if there is data which is assigned in view_basket for sicence book
+    use for loop to load data-->
+
+{% if science_in_basket %} {% for product in science_in_basket %}
+<div class="card mb-3 custom-card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img
+                src="{{product.image_url}}"
+                class="img-fluid rounded-start"
+                alt="..."
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">£{{product.price}}</h5>
+                <p class="card-text">{{product.product_name}}</p>
+                <div class="horizontal">{{product.author}}</div>
+                <div class="horizontal-q">
+                    <p class="">Quantity: {{product.quantity}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--send a sience related data with button-->
+    <form
+        action="{{url_for('delete_product')}}"
+        method="POST"
+        style="display: inline"
+    >
+        <input type="hidden" name="product_id" value="{{product.product_id}}" />
+        <input type="hidden" name="product_type" value="science" />
+        <input type="hidden" name="user_id" value="{{product.user_id}}" />
+        <button class="btn btn-light position-absolute top-0 end-0 m-3">
+            X
+        </button>
+    </form>
+</div>
+{% endfor %} {% endif %}
+
+<!--if there is data which is assigned in view_basket for novel
+    use for loop to load data-->
+
+{% if novels_in_basket %} {% for product in novels_in_basket %}
+<div class="card mb-3 custom-card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img
+                src="{{product.image_url}}"
+                class="img-fluid rounded-start"
+                alt="..."
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">£{{product.price}}</h5>
+                <p class="card-text">{{product.product_name}}</p>
+                <div class="horizontal">{{product.author}}</div>
+                <div class="horizontal-q">
+                    <p class="">Quantity: {{product.quantity}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--send a novel related data with button-->
+    <form
+        action="{{url_for('delete_product')}}"
+        method="POST"
+        style="display: inline"
+    >
+        <input type="hidden" name="product_id" value="{{product.product_id}}" />
+        <input type="hidden" name="product_type" value="novel" />
+        <input type="hidden" name="user_id" value="{{product.user_id}}" />
+        <button class="btn btn-light position-absolute top-0 end-0 m-3">
+            X
+        </button>
+    </form>
+</div>
+{% endfor %} {% endif %}
+
+<!--if there is data which is assigned in view_basket for biography
+    use for loop to load data-->
+
+{% if biographies_in_basket %} {% for product in biographies_in_basket %}
+<div class="card mb-3 custom-card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img
+                src="{{product.image_url}}"
+                class="img-fluid rounded-start"
+                alt="..."
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">£{{product.price}}</h5>
+                <p class="card-text">{{product.product_name}}</p>
+                <div class="horizontal">{{product.author}}</div>
+                <div class="horizontal-q">
+                    <p class="">Quantity: {{product.quantity}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--send a biography related data with button-->
+    <form
+        action="{{url_for('delete_product')}}"
+        method="POST"
+        style="display: inline"
+    >
+        <input type="hidden" name="product_id" value="{{product.product_id}}" />
+        <input type="hidden" name="product_type" value="biography" />
+        <input type="hidden" name="user_id" value="{{product.user_id}}" />
+        <button class="btn btn-light position-absolute top-0 end-0 m-3">
+            X
+        </button>
+    </form>
+</div>
+{% endfor %} {% endif %}
+
+<h3>Total Price: £{{ total_price }}</h3>
+
+{% endblock %}

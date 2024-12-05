@@ -1,0 +1,14 @@
+{%extends "base_temp.html"%} {% block content %} <h4>Login</h4>
+<div>
+    <form method="POST" action="">
+        <div></div>
+        {{form.hidden_tag()}} <!-- CSRF token for security -->
+        <div class="login-box">
+            <!--Get login data and submit data-->
+            <div class="password">{{form.username}}</div>
+            <div class="password">{{form.password}}</div>
+            <div class="login-button">{{form.submit}}</div>
+            <a href="{{url_for('create')}}" class="password">Create Account</a>
+        </div>
+</div>
+</form> {% endblock %}

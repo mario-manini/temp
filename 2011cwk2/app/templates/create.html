@@ -1,0 +1,16 @@
+{%extends "base_temp.html"%} {% block content %}
+<!--send a form to create account-->
+<h4>Create Account</h4>
+<div>
+    <form method="POST" action="">
+        <div></div>
+        {{form.hidden_tag()}}
+        <!--CSRF token for security-->
+        <div class="login-box">
+            <div>{{form.username}}</div>
+            <div class="password">{{form.password}}</div>
+            <div class="login-button">{{form.submit}}</div>
+            <a href="{{url_for('login')}}" class="password">Alredy have an account? Log in</a>
+        </div>
+</div>
+</form> {% endblock %}

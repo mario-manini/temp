@@ -1,0 +1,21 @@
+{%extends "base_temp.html"%}
+<!--Use for loop to load biography data and send biography data to implement add in add_to_basket--> {% block content %} <div class="detail_product">
+    <div class="horizontal-detail">
+        <img src="{{biography.image_url}}" class="detail_image">
+    </div>
+    <div class="product_description">
+        <h6 class="card-body">{{biography.name}}</h6>
+        <h7>biography</h7>
+        <p>{{biography.author}}</p>
+        <div class="product_price">
+            <p>£: {{biography.price}}</p>
+        </div>
+        <p>tax included</p>
+        <form action="{{url_for('add_to_basket')}}" method="POST" style="display:inline;">
+            <input type="hidden" name="product_id" value="{{biography.id}}">
+            <input type="hidden" name="product_type" value="biography">
+            <button type="submit" class="btn btn-outline-dark">Add to Basket</button>
+        </form>
+    </div>
+</div>
+</div> {% endblock %}

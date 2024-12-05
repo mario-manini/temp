@@ -1,0 +1,22 @@
+{%extends "base_temp.html"%} {% block content %}
+<!--Use for loop to load textbook data and send textbook data to implement add in add_to_basket-->
+<div class="detail_product">
+    <div class="horizontal-detail">
+        <img src="{{textbook.image_url}}" class="detail_image">
+    </div>
+    <div class="product_description">
+        <h6 class="card-body">{{textbook.name}}</h6>
+        <h7>Textbook</h7>
+        <div class="product_price">
+            <p>£: {{textbook.price}}</p>
+        </div>
+        <p>Author: {{ textbook.author }}</p>
+        <p>tax included</p>
+        <form action="{{url_for('add_to_basket')}}" method="POST" style="display:inline;">
+            <input type="hidden" name="product_id" value="{{textbook.id}}">
+            <input type="hidden" name="product_type" value="textbook">
+            <button type="submit" class="btn btn-outline-dark">Add to Basket</button>
+        </form>
+    </div>
+</div>
+</div> {% endblock %}

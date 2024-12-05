@@ -1,0 +1,31 @@
+{%extends "base_temp.html"%} {% block content %}
+<div class="card-whole">
+    <!--get textbook data with for loop and show it with card-->
+    <h1>Textbook</h1>
+    <div class="card-container">
+        {% for product in textbook %} {% if loop.index%4 == 1 and loop.index !=
+        1 %}
+    </div>
+    <div class="card-container">
+        {% endif %}
+        <div class="card-product">
+            <div class="card-view" style="width: 18rem">
+                <a href="{{url_for('view_textbook',textbook_id=product.id)}}">
+                    <img
+                        src="{{product.image_url}}"
+                        class="card-img-top"
+                        alt="..."
+                    />
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">Author: {{ product.author }}</p>
+                    <p class="card-text">£{{product.price}}</p>
+                    <p class="card-text">Stocks: {{product.stocks}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base_temp.html" %} {% block content %}
+<!--template for show error-->
+<div class="error">
+    <p class="out-of-stock-message">Product is Out of Stock</p>
+
+    <a href="{{url_for('home2')}}">Go Home</a>
+</div>
+
+{% endblock %}
